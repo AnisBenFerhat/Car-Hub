@@ -8,7 +8,7 @@ const CarCatalogue = () => {
         <p>Explore the cars you might like</p>
         <div className='home__filters'>
           <SearchBar />
-          <div className='home__filters-container'>
+          <div className='home__filter-container'>
             <CustomFilter title='fuel' />
             <CustomFilter title='year' />
           </div>
