@@ -4,14 +4,20 @@ import { useEffect, useState } from 'react';
 import { fetchCars } from '@/utils';
 import { CarCard } from '.';
 
-const CarResults = () => {
+const CarResults = ({ searchParams }) => {
   const [allCars, setAllCars] = useState([]);
   const [isDataEmpty, setIsDataEmpty] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cars = await fetchCars();
+        const cars = await fetchCars({
+          manufacturer: searchParams.manufacturer || '',
+          year: searchParams.year || 2022,
+          fuel: searchParams.fuel || '',
+          limit: searchParams.limit || 10,
+          model: searchParams.model || '',
+        });
         setAllCars(cars);
         setIsDataEmpty(!Array.isArray(cars) || cars.length < 1 || !cars);
       } catch (error) {
