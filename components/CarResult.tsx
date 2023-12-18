@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { fetchCars } from '@/utils';
-import { CarCard } from '.';
+import { CarCard, ShowMore } from '.';
+import { HomeProps } from '@/types';
 
-const CarResults = ({ searchParams }) => {
+const CarResults = ({ searchParams }: HomeProps) => {
   const [allCars, setAllCars] = useState([]);
   const [isDataEmpty, setIsDataEmpty] = useState(false);
 
@@ -38,6 +39,7 @@ const CarResults = ({ searchParams }) => {
               <CarCard car={car} /> // Ensure each CarCard has a unique key
             ))}
           </div>
+          <ShowMore pageNumber={(searchParams.limit || 10) / 10} isNext={(searchParams.limit || 10) > allCars.length} />
         </section>
       ) : (
         <div className='home__error-container'>

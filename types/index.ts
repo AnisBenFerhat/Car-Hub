@@ -37,3 +37,22 @@ export interface FilterProps {
   limit?: number;
   fuel?: string;
 }
+
+export interface HomeProps {
+  searchParams: FilterProps;
+}
+
+export interface OptionsProps {
+  title: string;
+  value: string;
+}
+
+export interface CustomFilterProps {
+  title: string;
+  options: OptionsProps[];
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
+}
